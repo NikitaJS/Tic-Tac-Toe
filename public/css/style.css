@@ -1,3 +1,14 @@
+body {
+	background-image: url('../img/prism.png');
+	background-repeat: repeat;
+	text-align: center;
+}
+
+div#container {
+	background-color: white;
+	display: inline-block;
+}
+
 div#board {
 	height: 512px;
 	width: 512px;
@@ -12,7 +23,7 @@ div#board {
 .cell {
 	width: 100%;
     height: 100%;
-    background: #effff6;
+    background: white;
 }
 
 .cell-cross {
@@ -39,6 +50,7 @@ div#board {
 }
 .cell-cross:after {
 	top: 50%;
+	right: 0;
 	height: 2%;
 	margin-top: 0%;
 	width: 100%;
@@ -59,7 +71,6 @@ div#board {
 	width: 80%;
 	height: 80%;
 	margin: auto;
-	/*z-index: 86;*/
 
 	-webkit-transition: background-color .5s ease-in-out;
 	-moz-transition: background-color .5s ease-in-out;
