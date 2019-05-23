@@ -5,20 +5,24 @@ import Config from './Config'
 var game = new Core();
 console.log(game.getBoard());
 
-var header = new Vue({
-	el: '#header',
-	data: {
-		turn: game.isWaitingForPlayer()
+Vue.component('appheader', {
+	beforeMount: function () {
+		game.onNewTurn(() => {
+			this.switchTurn();
+		});
+	},
+	props: ['playerturn'],
+	render() {
+		var message = this.playerturn ?
+			'This is your turn' :
+			"This is AI's turn";
+		return <div id="header">{ message }</div>
 	},
 	methods: {
 		switchTurn: function () {
-			this.turn = !this.turn;
+			this.playerturn = !this.playerturn;
 		}
 	}
-});
-
-game.onNewTurn(() => {
-	header.switchTurn();
 });
 
 Vue.component('cell', {
@@ -38,13 +42,23 @@ Vue.component('cell-list', {
 	}
 });
 
-var board = new Vue({
-	el: '#board',
-	data: {
-		cells: game.getBoard().map((actor, i) => {
-			return { id: i, state: Config.getState(actor) };
-		})
+Vue.component('board', {
+	// el: '#board',
+	beforeMount: function () {
+		game.onCellChange((n, actor) => {
+			this.setState(n, Config.getState(actor));
+		});
 	},
+	template: `<div id="board">
+				<cell-list @click="move"
+					v-for="cell in cells"
+					v-bind:cell="cell"
+					v-bind:key="cell.id"
+				></cell-list>
+			</div>
+	`
+	,
+	props: ['cells'],
 	methods: {
 		reset: function () {
 
@@ -80,6 +94,19 @@ var board = new Vue({
 	}
 });
 
-game.onCellChange((n, actor) => {
-	board.setState(n, Config.getState(actor));
+var app = new Vue({
+	el: '#app',
+	data: {
+		cells: game.getBoard().map((actor, i) => {
+			return { id: i, state: Config.getState(actor) };
+		})
+	},
+	render() {
+		return (
+		    <div id="container">
+		    	<appheader playerturn={game.isWaitingForPlayer()}></appheader>
+				<board cells={this.cells}></board>
+			</div>
+		)
+	}
 });

@@ -11,18 +11,7 @@
 	<noscript>
 		Unable de load application, failed to load JavaScript.
     </noscript>
-	<div id="app">
-	    <div id="container">
-			<div id="header"><p>Turn: {{ turn ? 'it is your turn.' : 'AI is playing...' }}</p></div>
-			<div id="board">
-				<cell-list @click="move"
-					v-for="cell in cells"
-					v-bind:cell="cell"
-					v-bind:key="cell.id"
-				></cell-list>
-			</div>
-		</div>
-	</div>
+	<div id="app"></div>
   	<script src="js/dist/app.js"></script>
 </body>
 </html>
