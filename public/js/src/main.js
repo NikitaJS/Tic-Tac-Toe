@@ -21,18 +21,29 @@ game.onNewTurn(() => {
 	header.switchTurn();
 });
 
+Vue.component('cell', {
+	props: ['label'],
+	render()  {
+		return <div class={'cell-' + this.label}></div>
+	}
+})
+
+Vue.component('cell-list', {
+	props: ['cell'],
+	render() {
+		const inAttrs = { label: this.cell.state.label };
+		return (
+			<div vOn:click={() => this.$emit('click', this.cell.id)} class="cell"><cell {...{ attrs: inAttrs }}   ></cell></div>
+		)
+	}
+});
+
 var board = new Vue({
 	el: '#board',
 	data: {
 		cells: game.getBoard().map((actor, i) => {
 			return { id: i, state: Config.getState(actor) };
 		})
-	},
-	components: {
-		'cell-list': {
-			props: ['cell'],
-			template: '<div v-on:click="$emit(\'click\', cell.id)" :id="\'cell-\' + cell.id" class="cell"><div :class="\'cell-\' + cell.state.label"></div></div>',
-		}
 	},
 	methods: {
 		reset: function () {

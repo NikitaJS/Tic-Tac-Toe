@@ -1,8 +1,8 @@
 /*
 * @Author: bgressier
 * @Date:   2019-05-20 11:36:14
-* @Last Modified by:   bgressier
-* @Last Modified time: 2019-05-22 11:29:19
+* @Last Modified by:   Travis
+* @Last Modified time: 2019-05-23 14:11:34
 */
 
 var gulp = require('gulp');
@@ -32,7 +32,7 @@ gulp.task('build', ['clean'], function() {
 					use: {
 						loader: 'babel-loader',
 						options: {
-							presets: ['@babel/preset-env']
+							presets: ['@babel/preset-env', '@vue/babel-preset-jsx']
 						}
 					}
 				}]
