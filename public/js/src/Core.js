@@ -1,12 +1,23 @@
 /*
 * @Author: bgressier
 * @Date:   2019-05-21 15:27:03
-* @Last Modified by:   bgressier
-* @Last Modified time: 2019-05-22 14:54:25
+* @Last Modified by:   Travis
+* @Last Modified time: 2019-05-23 16:08:34
 */
 import Config from './Config'
 
-export default class Core {
+let _instance;
+
+export default {
+	getInstance() {
+		if (!_instance) {
+			_instance = new Core();
+		}
+		return _instance;
+	}
+}
+
+class Core {
 	constructor() {
 		this.board = [0, 0, 0, 0, Config.actors.COMPUTER, 0, 0, 0, 0];
 		this.waitingForPlayer = true;
