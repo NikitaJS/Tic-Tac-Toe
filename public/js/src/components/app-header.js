@@ -8,10 +8,10 @@ export default {
 			this.switchTurn();
 		});
 	},
-	props: ['playerturn'],
+	props: ['initialTurn'],
 	data: function () {
 		return {
-			turn: this.turn
+			turn: this.initialTurn
 		};
 	},
 	render() {

@@ -23,7 +23,7 @@ var app = new Vue({
 	render() {
 		return (
 		    <div id="container">
-		    	<app-header playerturn={game.isWaitingForPlayer()}></app-header>
+		    	<app-header initialTurn={game.isWaitingForPlayer()}></app-header>
 				<board cells={this.cells}></board>
 			</div>
 		)
