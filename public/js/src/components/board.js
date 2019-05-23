@@ -8,6 +8,11 @@ export default {
 		game.onCellChange((n, actor) => {
 			this.setState(n, Config.getState(actor));
 		});
+		game.onReset(() => {
+			this.cells = game.getBoard().map((actor, i) => {
+				return { id: i, state: Config.getState(actor) };
+			});
+		});
 	},
 	template: `<div id="board">
 				<cell-list @click="move"
@@ -18,7 +23,14 @@ export default {
 			</div>
 	`
 	,
-	props: ['cells'],
+	props: ['initialBoard'],
+	data: function () {
+		return {
+			cells: this.initialBoard.map((actor, i) => {
+				return { id: i, state: Config.getState(actor) };
+			})
+		};
+	},
 	methods: {
 		reset: function () {
 

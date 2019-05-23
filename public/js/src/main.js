@@ -15,17 +15,16 @@ Vue.component('board', Board);
 
 var app = new Vue({
 	el: '#app',
-	data: {
-		cells: game.getBoard().map((actor, i) => {
-			return { id: i, state: Config.getState(actor) };
-		})
-	},
 	render() {
 		return (
 		    <div id="container">
 		    	<app-header initialTurn={game.isWaitingForPlayer()}></app-header>
-				<board cells={this.cells}></board>
+				<board initialBoard={game.getBoard()}></board>
 			</div>
 		)
 	}
 });
+
+window.TTT_RESET = function () {
+	game.reset();
+};

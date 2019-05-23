@@ -2,7 +2,7 @@
 * @Author: bgressier
 * @Date:   2019-05-21 15:27:03
 * @Last Modified by:   Travis
-* @Last Modified time: 2019-05-23 16:08:34
+* @Last Modified time: 2019-05-23 17:03:32
 */
 import Config from './Config'
 
@@ -23,6 +23,7 @@ class Core {
 		this.waitingForPlayer = true;
 		this.newTurnListeners = [];
 		this.cellChangeListeners = [];
+		this.resetListeners = [];
 	}
 
 	isWaitingForPlayer() {
@@ -35,6 +36,25 @@ class Core {
 
 	getWinner() {
 		return this._detectWinner(this.board);
+	}
+
+	reset() {
+		this.board = [0, 0, 0, 0, Config.actors.COMPUTER, 0, 0, 0, 0];
+		this.waitingForPlayer = true;
+		this.emitReset();
+		return this;
+	}
+
+	emitReset() {
+		this.resetListeners.forEach((listener) => {
+			listener();
+		});
+		return this;
+	}
+
+	onReset(listener) {
+		this.resetListeners.push(listener);
+		return this;
 	}
 
 	switchTurn() {
