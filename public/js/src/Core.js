@@ -1,9 +1,3 @@
-/*
-* @Author: bgressier
-* @Date:   2019-05-21 15:27:03
-* @Last Modified by:   Travis
-* @Last Modified time: 2019-05-23 17:03:32
-*/
 import Config from './Config'
 
 let _instance;
