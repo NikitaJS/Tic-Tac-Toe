@@ -1,7 +1,12 @@
 import Config from '../Config'
 
+import Cell from './cell'
+
 export default {
 	props: ['cell'],
+	components: {
+		cell: Cell
+	},
 	render() {
 		let label = 'empty';
 		if (this.cell.value == Config.actors.COMPUTER)

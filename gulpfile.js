@@ -1,15 +1,5 @@
-/*
-* @Author: bgressier
-* @Date:   2019-05-20 11:36:14
-* @Last Modified by:   Travis
-* @Last Modified time: 2019-05-23 14:11:34
-*/
-
 var gulp = require('gulp');
-// var sourcemaps = require("gulp-sourcemaps");
-// var concat = require('gulp-concat');
 var del = require('del');
-// var babel = require('gulp-babel');
 var webpack = require('webpack-stream');
 
 gulp.task('clean', function () {
@@ -25,6 +15,7 @@ gulp.task('build', ['clean'], function() {
 				filename: 'app.js'
 			},
 			devtool: "sourcemap",
+			mode: "development",
 			module: {
 				rules: [{
 					test: /\.js$/,
@@ -38,10 +29,6 @@ gulp.task('build', ['clean'], function() {
 				}]
 			}
 		}))
-		// .pipe(sourcemaps.init())
-		// .pipe(babel())
-		// .pipe(concat('app.js'))
-		// .pipe(sourcemaps.write("."))
 		.pipe(gulp.dest('public/js/dist/'));
 });
 

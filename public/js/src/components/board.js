@@ -1,7 +1,4 @@
-import Core from '../Core'
-import Config from '../Config'
-
-let game = Core.getInstance();
+import CellList from './cell-list'
 
 export default {
 	template: `<div id="board">
@@ -14,6 +11,9 @@ export default {
 	`
 	,
 	props: ['cells'],
+	components: {
+		'cell-list': CellList
+	},
 	methods: {
 		move: function (n) {
 			return this.$parent.move(n);

@@ -10,6 +10,8 @@
     "@babel/preset-env": "^7.4.4",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.0.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "acorn": "^6.1.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "del": "^2.2.2",
@@ -17,10 +19,19 @@
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-sourcemaps": "^2.6.5",
+    "jsdom": "^15.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^2.0.0-beta.0",
+    "should": "^13.2.3",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "postinstall": "bower install && gulp build"
+    "postinstall": "bower install && gulp build",
+    "test": "mocha-webpack --webpack-config test/webpack.config.js --require test/setup.js test/components/*.spec.js"
   },
   "main": "app.js",
   "engine": {
