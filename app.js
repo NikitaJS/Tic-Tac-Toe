@@ -1,14 +1,11 @@
-/*
-* @Author: bgressier
-* @Date:   2019-05-20 11:36:23
-* @Last Modified by:   bgressier
-* @Last Modified time: 2019-05-20 12:05:37
-*/
-
+var process = require('process');
 var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
+var config = {
+	port: process.env.NODE_ENV === 'production' ? 80 : 3000
+};
 
 app.use(express.static(__dirname + '/public', {
 	index: ['index.html']
@@ -23,5 +20,5 @@ api.all('*', function (res, res) {
 
 app.use('/api', api);
 
-app.listen(3000);
-console.log('Launching Tic-Tac-Toc app on port 3000');
+app.listen(config.port);
+console.log('Launching Tic-Tac-Toc app on port ' + config.port);

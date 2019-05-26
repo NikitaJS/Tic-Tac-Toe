@@ -15,7 +15,7 @@ gulp.task('build', ['clean'], function() {
 				filename: 'app.js'
 			},
 			devtool: "sourcemap",
-			mode: "development",
+			mode: "production",
 			module: {
 				rules: [{
 					test: /\.js$/,

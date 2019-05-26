@@ -31,10 +31,12 @@
   },
   "scripts": {
     "postinstall": "bower install && gulp build",
-    "test": "mocha-webpack --webpack-config test/webpack.config.js --require test/setup.js test/**/*.spec.js"
+    "test": "mocha-webpack --webpack-config test/webpack.config.js --require test/setup.js test/**/*.spec.js",
+    "start": "node app.js"
   },
   "main": "app.js",
   "engine": {
-    "node": ">=8.11.0"
+    "node": ">=8.11.0",
+    "npm": ">=5.6.0"
   }
 }
