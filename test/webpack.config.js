@@ -22,10 +22,10 @@ module.exports = {
 	},
 	resolve: {
 		modules: [
-			path.resolve(__dirname, '../../public/js/src/'),
 			"node_modules"
 		],
 		alias: {
+			src: path.resolve(__dirname, '../public/js/src/'),
 			vue: __dirname + '/../public/js/libs/vue/dist/vue.js'
 		}
 	}

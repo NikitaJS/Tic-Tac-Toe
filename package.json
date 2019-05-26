@@ -31,7 +31,7 @@
   },
   "scripts": {
     "postinstall": "bower install && gulp build",
-    "test": "mocha-webpack --webpack-config test/webpack.config.js --require test/setup.js test/*.spec.js"
+    "test": "mocha-webpack --webpack-config test/webpack.config.js --require test/setup.js test/**/*.spec.js"
   },
   "main": "app.js",
   "engine": {

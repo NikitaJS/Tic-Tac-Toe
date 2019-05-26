@@ -49,7 +49,7 @@ class Core {
 
 	emitDone() {
 		this.doneListeners.forEach((listener) => {
-			listener();
+			setTimeout(listener, 0);
 		});
 		return this;
 	}
@@ -61,7 +61,7 @@ class Core {
 
 	emitReset() {
 		this.resetListeners.forEach((listener) => {
-			listener();
+			setTimeout(listener, 0);
 		});
 		return this;
 	}
@@ -79,7 +79,7 @@ class Core {
 
 	emitNewTurn() {
 		this.newTurnListeners.forEach((listener) => {
-			listener();
+			setTimeout(listener, 0);
 		});
 		return this;
 	}

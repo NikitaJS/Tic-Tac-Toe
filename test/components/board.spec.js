@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { shallowMount, mount } from '@vue/test-utils'
 
-import Board from '../../public/js/src/components/board'
+import Board from 'src/components/board'
 
 describe('components:Board', () => {
 	it('Should have a move() method', () => {

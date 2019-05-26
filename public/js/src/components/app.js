@@ -39,13 +39,12 @@ export default {
 	methods: {
 		move: function (n) {
 			if (n < 0 || n >= this.cells.length) {
-				return console.error(new RangeError('Value ' + n + ' is out of bounds'));
+				return new RangeError('Value ' + n + ' is out of bounds');
 			}
 			if (game.isWaitingForPlayer() && game.getCell(n) == 0) {
 				game.switchTurn();
 				game.setCell(n, Config.actors.PLAYER);
 				let move = game.aiBestMove();
-				console.log('Next move: ', move);
 				if (move.n != null) {
 					game.setCell(move.n, Config.actors.COMPUTER);
 					let winner;

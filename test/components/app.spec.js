@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import { shallowMount, mount } from '@vue/test-utils'
 
-import App from '../../public/js/src/components/app'
-import AppHeader from '../../public/js/src/components/app-header'
-import Board from '../../public/js/src/components/board'
+import Core from 'src/Core'
+import App from 'src/components/app'
+import AppHeader from 'src/components/app-header'
+import Board from 'src/components/board'
 
 describe('components:App', () => {
+	let game = Core.getInstance();
+	before(() => {
+		game.reset();
+	});
+
 	it('Should a move() method', () => {
 		(typeof App.methods.move).should.equal('function');
 	});
