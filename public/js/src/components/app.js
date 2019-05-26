@@ -38,6 +38,9 @@ export default {
 	},
 	methods: {
 		move: function (n) {
+			if (n < 0 || n >= this.cells.length) {
+				return console.error(new RangeError('Value ' + n + ' is out of bounds'));
+			}
 			if (game.isWaitingForPlayer() && game.getCell(n) == 0) {
 				game.switchTurn();
 				game.setCell(n, Config.actors.PLAYER);
@@ -47,11 +50,11 @@ export default {
 					game.setCell(move.n, Config.actors.COMPUTER);
 					let winner;
 					if (winner = game.getWinner()) {
-						console.log('[Result] Winner: ', winner);
+						game.emitDone();
 						return;
 					}
 					if (game.isBoardFull()) {
-						console.log('[Result] DRAW');
+						game.emitDone();
 						return;
 					}
 					game.switchTurn();

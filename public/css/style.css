@@ -9,6 +9,31 @@ div#container {
 	display: inline-block;
 }
 
+div#header {
+	vertical-align: middle;
+    line-height: 40px;
+    font-family: calibri;
+}
+
+#btn-restart {
+	display: block;
+    position: absolute;
+    top: 20px;
+   	text-decoration: none;
+	border-radius: 2px;
+    border: 0px;
+	background-color: #0078e7;
+	color: white;
+    font-family: inherit;
+    margin-left: 30px;
+	zoom: 1;
+	white-space: nowrap;
+	vertical-align: middle;
+	text-align: center;
+	cursor: pointer;
+	-webkit-user-drag: none;
+}
+
 div#board {
 	height: 512px;
 	width: 512px;

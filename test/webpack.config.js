@@ -10,10 +10,6 @@ module.exports = {
 	mode: "development",
 	module: {
 		rules: [{
-		// 	test: /\.vue$/,
-		// 	exclude: /node_modules\/(?!bullets-js)/,
-		// 	loader: 'vue-loader'
-		// }, {
 			test: /\.js$/,
 			exclude: /node_modules\/(?!bullets-js)/,
 			use: {
@@ -32,8 +28,5 @@ module.exports = {
 		alias: {
 			vue: __dirname + '/../public/js/libs/vue/dist/vue.js'
 		}
-	},
-	// plugins: [
-	// 	new VueLoaderPlugin()
-	// ]
+	}
 };

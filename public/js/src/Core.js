@@ -18,6 +18,11 @@ class Core {
 		this.newTurnListeners = [];
 		this.cellChangeListeners = [];
 		this.resetListeners = [];
+		this.doneListeners = [];
+		this.winner = null;
+		this.onCellChange(() => {
+			this.winner = null;
+		});
 	}
 
 	isWaitingForPlayer() {
@@ -29,13 +34,28 @@ class Core {
 	}
 
 	getWinner() {
-		return this._detectWinner(this.board);
+		if (this.winner === null) {
+			this.winner = this._detectWinner(this.board);
+		}
+		return this.winner;
 	}
 
 	reset() {
 		this.board = [0, 0, 0, 0, Config.actors.COMPUTER, 0, 0, 0, 0];
 		this.waitingForPlayer = true;
 		this.emitReset();
+		return this;
+	}
+
+	emitDone() {
+		this.doneListeners.forEach((listener) => {
+			listener();
+		});
+		return this;
+	}
+
+	onDone(listener) {
+		this.doneListeners.push(listener);
 		return this;
 	}
 

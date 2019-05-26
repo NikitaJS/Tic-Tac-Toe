@@ -10,13 +10,30 @@ describe('components:App', () => {
 		(typeof App.methods.move).should.equal('function');
 	});
 
+	let wrapper = mount(App);
+
 	it('Should have app-header & board components', () => {
 		App.components['app-header'].should.be.an.instanceOf(Object);
 		App.components['board'].should.be.an.instanceOf(Object);
 	});
 
 	it('Should render correctly with initial state', () => {
-		let wrapper = mount(App);
+		wrapper.findAll('#board').length.should.equal(1);
 		wrapper.findAll('.cell').length.should.equal(9);
+		wrapper.findAll('.cell-empty').length.should.equal(8);
+		wrapper.findAll('.cell-cross').length.should.equal(1);
+		wrapper.vm.cells.should.be.an.instanceOf(Array);
+		wrapper.vm.cells.length.should.equal(9);
+	});
+
+	it('Should handle click', () => {
+		wrapper.findAll('.cell').at(0).trigger('click');
+		wrapper.findAll('.cell-empty').length.should.equal(6);
+		wrapper.findAll('.cell-circle').length.should.equal(1);
+		wrapper.vm.cells[0].value.should.equal(1);
+	});
+
+	it('Should handle wrong move value', () => {
+		wrapper.find(Board).vm.move(10);
 	});
 });
