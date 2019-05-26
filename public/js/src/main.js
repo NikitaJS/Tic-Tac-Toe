@@ -6,7 +6,7 @@ let game = Core.getInstance();
 
 var app = new Vue({
 	el: '#app',
-	template: '<App/>',
+	template: '<App ref="App" />',
 	components: { App }
 });
 
@@ -15,5 +15,6 @@ window.TTT_RESET = function () {
 };
 
 window.TTT_MOVEMENT = function (n) {
-	app.move(n);
+	// app.move(n);
+	app.$refs.App.move(n);
 };

@@ -29,3 +29,15 @@ Sample Tic Tac Toe single page app
 	``` Bash
 	$ npm run start
 	```
+
+
+## Global functions
+1. Reset game:
+	```JavaScript
+	window.TTT_RESET();
+	```
+2. Make a player move:
+	Every cell is identified by an integer between 0 and 8 (included)
+	```JavaScript
+	window.TTT_MOVEMENT(0);
+	```
